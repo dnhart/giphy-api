@@ -36,12 +36,13 @@ function userSearch(e){
 	e.preventDefault();
 	searchTerm = $('#search').val(); 
 	searchTerm = searchTerm.replace(/\s+/g, '+').toLowerCase();
-		console.log(searchTerm);
+		
 	topics.push(searchTerm);
 	setup();
    	displayGifs ();    
-   	$('#search').val('').placeholder();
-};
+   	$('#search').val('')
+   	$('#search').attr("placeholder", "Search");
+}; 
 
 //takes the searchTerm, queries Giphy, and displays results.
 function displayGifs (){
@@ -52,7 +53,7 @@ function displayGifs (){
   $.ajax({ url: queryURL, method: 'GET' }).done(function(response) {
       var giphyArray = response;
       var importArray =giphyArray.data;
-      console.log(importArray);
+
 
       //clears the existing images, if any
       $("#photoContainer").html("");
