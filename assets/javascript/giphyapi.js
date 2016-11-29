@@ -36,12 +36,18 @@ function userSearch(e){
 	e.preventDefault();
 	searchTerm = $('#search').val(); 
 	searchTerm = searchTerm.replace(/\s+/g, '+').toLowerCase();
-		
-	topics.push(searchTerm);
-	setup();
-   	displayGifs ();    
-   	$('#search').val('')
-   	$('#search').attr("placeholder", "Search");
+	
+
+	if (searchTerm && topics.indexOf(searchTerm) === -1) {
+		topics.push(searchTerm);
+		setup();
+	   	displayGifs ();    
+	   } else {
+	   	alert("Please enter a new topic.");
+	   };
+	$('#search').val('')
+	$('#search').attr("placeholder", "Search");
+
 }; 
 
 //takes the searchTerm, queries Giphy, and displays results.
