@@ -46,7 +46,7 @@ function userSearch(e){
 //takes the searchTerm, queries Giphy, and displays results.
 function displayGifs (){
 	//giphy query
-   var queryURL = "http://api.giphy.com/v1/gifs/search?q="+searchTerm+"&api_key=dc6zaTOxFJmzC&rating=pg-13&limit=10";
+   var queryURL = "https://api.giphy.com/v1/gifs/search?q="+searchTerm+"&api_key=dc6zaTOxFJmzC&rating=pg-13&limit=10";
 
    //pulls the inforation (still image, animated image, rating, and slug) from the gighy JSON object
   $.ajax({ url: queryURL, method: 'GET' }).done(function(response) {
