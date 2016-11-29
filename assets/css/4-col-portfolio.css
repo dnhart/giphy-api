@@ -5,7 +5,7 @@
  */
 
 body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    
 }
 
 .portfolio-item {
@@ -27,4 +27,12 @@ footer {
 
 .animated{
 	display: none;
+}
+
+.navbar-text {
+	font-size: 1.2em;
+    color: #efefef;
+}
+.navbar-header {
+	padding: 10px;
 }
