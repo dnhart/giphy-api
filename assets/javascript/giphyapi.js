@@ -24,7 +24,7 @@ setup();
 function buttonSearch(){
 	searchTerm = this.attributes[2].value; 
 	searchTerm = searchTerm.replace(/\s+/g, '+').toLowerCase();
-		console.log(searchTerm);
+		
   	displayGifs ();
 };
 
@@ -35,12 +35,11 @@ $(".userInput").on("click", userSearch);
 function userSearch(e){
 	e.preventDefault();
 	searchTerm = $('#search').val(); 
-	searchTerm = searchTerm.replace(/\s+/g, '+').toLowerCase();
-	
 
 	if (searchTerm && topics.indexOf(searchTerm) === -1) {
 		topics.push(searchTerm);
 		setup();
+		searchTerm = searchTerm.replace(/\s+/g, '+').toLowerCase();
 	   	displayGifs ();    
 	   } else {
 	   	alert("Please enter a new topic.");
