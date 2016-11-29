@@ -30,9 +30,18 @@ footer {
 }
 
 .navbar-text {
-	font-size: 1.2em;
+	font-size: 1.3em;
     color: #efefef;
+    text-align: center;
 }
 .navbar-header {
 	padding: 10px;
+	float: none;
+}
+
+.navbar-brand {
+ 	padding: 0px;
+    height: 50px;
+    font-size: 18px;
+    line-height: 20px;
 }
