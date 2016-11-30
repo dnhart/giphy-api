@@ -19,6 +19,8 @@ function setup(){
 //setup initial buttons from the topics array
 setup();
 
+//assigns onClick function to search button
+$(".userInput").on("click", userSearch);
 
 //sets searchTerm when topic button is clicked
 function buttonSearch(){
@@ -28,14 +30,12 @@ function buttonSearch(){
   	displayGifs ();
 };
 
-//assigns onClick function to search button
-$(".userInput").on("click", userSearch);
 
 //sets searchTerm when the user enters a term in the search box
 function userSearch(e){
 	e.preventDefault();
-	searchTerm = $('#search').val(); 
-
+	searchTerm = $('#search').val().trim(); 
+//
 	if (searchTerm && topics.indexOf(searchTerm) === -1) {
 		topics.push(searchTerm);
 		setup();
@@ -44,7 +44,7 @@ function userSearch(e){
 	   } else {
 	   	alert("Please enter a new topic.");
 	   };
-	$('#search').val('')
+	$('#search').val('');
 	$('#search').attr("placeholder", "Search");
 
 }; 
