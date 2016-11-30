@@ -20,8 +20,8 @@ function setup(){
 setup();
 
 //assigns onClick function to search button
-$(".userInput").on("click", userSearch);
-
+$(".userInput").on("click", userNormalSearch);
+$(".userAnimeInput").on("click", userAnimeSearch);
 //sets searchTerm when topic button is clicked
 function buttonSearch(){
 	searchTerm = this.attributes[2].value; 
@@ -32,10 +32,26 @@ function buttonSearch(){
 
 
 //sets searchTerm when the user enters a term in the search box
-function userSearch(e){
+function userNormalSearch(e){
 	e.preventDefault();
 	searchTerm = $('#search').val().trim(); 
-//
+	userSearch();
+};
+
+function userAnimeSearch(e){
+	e.preventDefault();
+	if($('#search').val().trim()){
+	searchTerm ="Anime "+ $('#search').val().trim(); 
+	userSearch();}
+	else {
+		alert("Please enter a new topic.");
+	}
+};
+
+
+
+
+function userSearch(e){
 	if (searchTerm && topics.indexOf(searchTerm) === -1) {
 		topics.push(searchTerm);
 		setup();
