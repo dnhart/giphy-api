@@ -79,20 +79,43 @@ function displayGifs (){
       //clears the existing images, if any
       $("#photoContainer").html("");
 
-      //pulls the variables and displays the images from the JSON object
-      $.each(importArray, function(key, value){
-		var whatisthekey = key;
-		var stillImage = value.images.fixed_height_still.url;
-		var animatedImage = value.images.fixed_height.url;
-		var rating = value.rating;
-		var slug = value.slug;
-		$("#photoContainer").append("<div class='portfolio-item'><img class='img-responsive still' src="+stillImage+" alt='"+slug+"'><img class='img-responsive animated' src="+animatedImage+" alt='"+slug+"'><figcaption>Rating: "+rating+"</div>");
+		// Wrap everything in an IIFE
+		(function($, viewport){
 
-	});
+   			// Executes only in XS breakpoint
+    		if( viewport.is('xs') ) {
+	             //pulls the variables and displays the images from the JSON object
+	      		$.each(importArray, function(key, value){
+				var whatisthekey = key;
+				var stillImage = value.images.fixed_height_small_still.url;
+				var animatedImage = value.images.fixed_height_small.url;
+				var rating = value.rating;
+				var slug = value.slug;
+				$("#photoContainer").append("<div class='portfolio-item'><img class='img-responsive still' src="+stillImage+" alt='"+slug+"'><img class='img-responsive animated' src="+animatedImage+" alt='"+slug+"'><figcaption>Rating: "+rating+"</div>");
+				});
+   			 }
+
+		    // Executes in SM, MD and LG breakpoints
+		    if( viewport.is('>=sm') ) {
+		        $.each(importArray, function(key, value){
+				var whatisthekey = key;
+				var stillImage = value.images.fixed_height_still.url;
+				var animatedImage = value.images.fixed_height.url;
+				var rating = value.ratng;
+				var slug = value.slug;
+			
+				$("#photoContainer").append("<div class='portfolio-item'><img class='img-responsive still' src="+stillImage+" alt='"+slug+"'><img class='img-responsive animated' src="+animatedImage+" alt='"+slug+"'><figcaption>Rating: "+rating+" </div>");
+	    		}); 
+			};//end if viewport >sm
     //assigns onClick functionality to images
-  	$(".portfolio-item").on("click", toggleGifs);   
+  	$(".portfolio-item").on("click", toggleGifs); 
+			
+	})(jQuery, ResponsiveBootstrapToolkit);
 
   }); //end ajax loop
+
+ 
+
 };//end displayGifs
 
 //toggles visibiity on still and animated images
@@ -100,3 +123,5 @@ function toggleGifs (event){
 	$(event.currentTarget.firstChild).toggle();
 	$(event.currentTarget.childNodes[1]).toggle();
 };
+
+
